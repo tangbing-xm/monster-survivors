@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tower Smash - GameHub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'game-dark': '#1a1a2e',
+            'game-accent': '#7f5af0',
+            'game-accent-dark': '#6a4cbf',
+            'game-light': '#f8f9fa',
+            'game-card': '#242438',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .share-btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    #game-container {
+      aspect-ratio: 16/9;
+      height: 75vh;
+    }
+    
+    @media (max-width: 768px) {
+      #game-container {
+        aspect-ratio: 4/3;
+        height: auto;
+        min-height: 50vh;
+      }
+      
+      .share-option span {
+        font-size: 0.7rem;
+      }
+      
+      #shareModal .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .stats-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      
+      #shareButton span {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-game-dark text-game-light min-h-screen">
+  <!-- Header -->
+  <header class="bg-game-card shadow-lg border-b border-gray-800">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <a href="index.html" class="flex items-center">
+            <i class="fas fa-gamepad text-game-accent text-3xl mr-2"></i>
+            <span class="text-2xl font-bold">GameHub</span>
+          </a>
+          <div class="hidden md:flex space-x-6 ml-10">
+            <a href="index.html" class="hover:text-game-accent">Games</a>
+            <a href="#" class="hover:text-game-accent">Achievements</a>
+            <a href="#" class="hover:text-game-accent">Rankings</a>
+            <a href="#" class="hover:text-game-accent">Community</a>
+          </div>
+        </div>
+        <div class="flex items-center space-x-3">
+          <div class="relative hidden md:block">
+            <input type="text" placeholder="Search games..." class="bg-gray-800 text-white rounded-full px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-game-accent">
+            <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+          </div>
+        </div>
+      </div>
+      <div class="md:hidden mt-4">
+        <input type="text" placeholder="Search games..." class="bg-gray-800 text-white rounded-full px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-game-accent">
+      </div>
+    </div>
+  </header>
+
+  <!-- Game Content -->
+  <main class="container mx-auto px-4 py-6">
+    <div class="mb-4">
+      <a href="index.html" class="text-gray-400 hover:text-game-accent">
+        <i class="fas fa-arrow-left mr-2"></i>Back to Home
+      </a>
+    </div>
+    
+    <!-- Tower Smash and Stats -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+      <h1 class="text-3xl font-bold mb-2 md:mb-0">Tower Smash</h1>
+      
+      <!-- Stats and Social Sharing Combined -->
+      <div class="flex flex-wrap items-center gap-2 stats-container">
+        <div class="flex items-center bg-gray-800 px-3 py-1 rounded-md">
+          <i class="fas fa-star text-yellow-500 mr-2"></i>
+          <span>4.8</span>
+        </div>
+        <div class="flex items-center bg-gray-800 px-3 py-1 rounded-md">
+          <i class="fas fa-play text-gray-400 mr-2"></i>
+          <span>25.6k</span>
+        </div>
+        <button class="bg-game-accent hover:bg-game-accent-dark px-3 py-1 rounded-md">
+          <i class="far fa-heart mr-1"></i> Favorite
+        </button>
+        
+        <!-- Single Share Button -->
+        <button id="shareButton" class="share-btn bg-gray-700 hover:bg-gray-600 text-white p-2 rounded-md transition-transform flex items-center">
+          <i class="fas fa-share-alt mr-1"></i>
+          <span>Share</span>
+        </button>
+        
+        <!-- Share Modal (hidden by default) -->
+        <div id="shareModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+          <div class="bg-game-card rounded-lg p-5 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-xl font-bold">Share this game</h3>
+              <button id="closeShareModal" class="text-gray-400 hover:text-white">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+              <a href="#" onclick="shareGame('twitter'); return false;" class="share-option flex flex-col items-center p-3 hover:bg-gray-800 rounded-md transition">
+                <div class="bg-[#1DA1F2] w-12 h-12 rounded-full flex items-center justify-center mb-2">
+                  <i class="fab fa-twitter text-white text-xl"></i>
+                </div>
+                <span class="text-sm">Twitter</span>
+              </a>
+              <a href="#" onclick="shareGame('facebook'); return false;" class="share-option flex flex-col items-center p-3 hover:bg-gray-800 rounded-md transition">
+                <div class="bg-[#4267B2] w-12 h-12 rounded-full flex items-center justify-center mb-2">
+                  <i class="fab fa-facebook-f text-white text-xl"></i>
+                </div>
+                <span class="text-sm">Facebook</span>
+              </a>
+              <a href="#" onclick="shareGame('instagram'); return false;" class="share-option flex flex-col items-center p-3 hover:bg-gray-800 rounded-md transition">
+                <div class="bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] w-12 h-12 rounded-full flex items-center justify-center mb-2">
+                  <i class="fab fa-instagram text-white text-xl"></i>
+                </div>
+                <span class="text-sm">Instagram</span>
+              </a>
+              <a href="#" onclick="shareGame('weibo'); return false;" class="share-option flex flex-col items-center p-3 hover:bg-gray-800 rounded-md transition">
+                <div class="bg-[#E6162D] w-12 h-12 rounded-full flex items-center justify-center mb-2">
+                  <i class="fab fa-weibo text-white text-xl"></i>
+                </div>
+                <span class="text-sm">Weibo</span>
+              </a>
+              <a href="#" onclick="shareGame('wechat'); return false;" class="share-option flex flex-col items-center p-3 hover:bg-gray-800 rounded-md transition">
+                <div class="bg-[#07C160] w-12 h-12 rounded-full flex items-center justify-center mb-2">
+                  <i class="fab fa-weixin text-white text-xl"></i>
+                </div>
+                <span class="text-sm">WeChat</span>
+              </a>
+              <a href="#" onclick="copyGameLink(); return false;" class="share-option flex flex-col items-center p-3 hover:bg-gray-800 rounded-md transition">
+                <div class="bg-gray-700 w-12 h-12 rounded-full flex items-center justify-center mb-2">
+                  <i class="fas fa-link text-white text-xl"></i>
+                </div>
+                <span class="text-sm">Copy Link</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Game Container and Description Side by Side -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-8">
+      <!-- Game Container - Takes 3/4 of space on large screens -->
+      <div class="lg:col-span-3">
+        <div id="game-container" class="bg-black rounded-lg overflow-hidden w-full">
+          <!-- Game content (iframe) -->
+          <iframe src="https://play.famobi.com/tower-smash" frameborder="0" class="w-full h-full"></iframe>
+        </div>
+      </div>
+      
+      <!-- Game Description and Controls - Takes 1/4 of space on large screens -->
+      <div class="bg-game-card bg-opacity-90 p-4 rounded-lg flex flex-col h-full">
+        <h2 class="text-lg font-bold mb-3">Game Description</h2>
+        <p class="text-gray-300 text-sm mb-4">
+          This is the detailed description of the game. It introduces the game's background story, gameplay rules, and special features.
+        </p>
+        
+        <h3 class="text-base font-bold mt-2 mb-2">Controls</h3>
+        <ul class="list-disc list-inside text-gray-300 text-sm space-y-1">
+          <li>Arrow keys or WASD: Move</li>
+          <li>Left mouse: Interact</li>
+          <li>Spacebar: Jump</li>
+          <li>ESC: Pause</li>
+        </ul>
+        
+        <div class="mt-auto pt-4">
+          <h3 class="text-base font-bold mb-2">Game Info</h3>
+          <div class="space-y-1 text-xs">
+            <div>
+              <span class="text-gray-400">Genre:</span>
+              <span class="ml-2">Puzzle</span>
+            </div>
+            <div>
+              <span class="text-gray-400">Released:</span>
+              <span class="ml-2">October 2023</span>
+            </div>
+            <div>
+              <span class="text-gray-400">Developer:</span>
+              <span class="ml-2">GameHub Studios</span>
+            </div>
+            <div>
+              <span class="text-gray-400">Platform:</span>
+              <span class="ml-2">Web, Mobile</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Related Games -->
+    <div class="bg-game-card p-6 rounded-lg mb-8">
+      <h2 class="text-xl font-bold mb-4">Related Games</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="#" class="flex items-center space-x-3 hover:bg-gray-800 p-2 rounded-md transition">
+          <img src="https://via.placeholder.com/50" alt="Related Game 1" class="w-12 h-12 rounded-md">
+          <div>
+            <h4 class="font-medium">Related Game 1</h4>
+            <div class="flex items-center text-sm text-gray-400">
+              <i class="fas fa-star text-yellow-500 mr-1"></i>
+              <span>4.7</span>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="flex items-center space-x-3 hover:bg-gray-800 p-2 rounded-md transition">
+          <img src="https://via.placeholder.com/50" alt="Related Game 2" class="w-12 h-12 rounded-md">
+          <div>
+            <h4 class="font-medium">Related Game 2</h4>
+            <div class="flex items-center text-sm text-gray-400">
+              <i class="fas fa-star text-yellow-500 mr-1"></i>
+              <span>4.5</span>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="flex items-center space-x-3 hover:bg-gray-800 p-2 rounded-md transition">
+          <img src="https://via.placeholder.com/50" alt="Related Game 3" class="w-12 h-12 rounded-md">
+          <div>
+            <h4 class="font-medium">Related Game 3</h4>
+            <div class="flex items-center text-sm text-gray-400">
+              <i class="fas fa-star text-yellow-500 mr-1"></i>
+              <span>4.3</span>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="flex items-center space-x-3 hover:bg-gray-800 p-2 rounded-md transition">
+          <img src="https://via.placeholder.com/50" alt="Related Game 4" class="w-12 h-12 rounded-md">
+          <div>
+            <h4 class="font-medium">Related Game 4</h4>
+            <div class="flex items-center text-sm text-gray-400">
+              <i class="fas fa-star text-yellow-500 mr-1"></i>
+              <span>4.1</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+    <!-- User Comments -->
+    <div class="bg-game-card p-6 rounded-lg mb-8">
+      <h2 class="text-xl font-bold mb-4">User Comments</h2>
+      
+      <!-- Comment Form -->
+      <div class="mb-6">
+        <div class="flex space-x-4 mb-4">
+          <div class="flex items-center">
+            <span class="mr-2">Rating:</span>
+            <div class="flex space-x-1">
+              <i class="fas fa-star text-yellow-500 cursor-pointer"></i>
+              <i class="fas fa-star text-yellow-500 cursor-pointer"></i>
+              <i class="fas fa-star text-yellow-500 cursor-pointer"></i>
+              <i class="fas fa-star text-yellow-500 cursor-pointer"></i>
+              <i class="far fa-star text-yellow-500 cursor-pointer"></i>
+            </div>
+          </div>
+        </div>
+        <textarea placeholder="Share your gaming experience..." class="w-full bg-gray-800 text-white rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-game-accent"></textarea>
+        <div class="flex justify-end mt-2">
+          <button class="bg-game-accent hover:bg-game-accent-dark px-4 py-2 rounded-md">Post Comment</button>
+        </div>
+      </div>
+      
+      <!-- Comment List -->
+      <div class="space-y-4">
+        <div class="border-b border-gray-700 pb-4">
+          <div class="flex justify-between items-start mb-2">
+            <div class="flex items-center">
+              <img src="https://via.placeholder.com/40" alt="User Avatar" class="w-10 h-10 rounded-full mr-3">
+              <div>
+                <h4 class="font-medium">Username1</h4>
+                <div class="flex space-x-1">
+                  <i class="fas fa-star text-yellow-500"></i>
+                  <i class="fas fa-star text-yellow-500"></i>
+                  <i class="fas fa-star text-yellow-500"></i>
+                  <i class="fas fa-star text-yellow-500"></i>
+                  <i class="fas fa-star text-yellow-500"></i>
+                </div>
+              </div>
+            </div>
+            <span class="text-sm text-gray-400">2 days ago</span>
+          </div>
+          <p class="text-gray-300">This game is amazing! I've been playing for hours and can't stop. The graphics are great and the controls are smooth. Highly recommend to everyone!</p>
+        </div>
+        
+        <div class="border-b border-gray-700 pb-4">
+          <div class="flex justify-between items-start mb-2">
+            <div class="flex items-center">
+              <img src="https://via.placeholder.com/40" alt="User Avatar" class="w-10 h-10 rounded-full mr-3">
+              <div>
+                <h4 class="font-medium">Username2</h4>
+                <div class="flex space-x-1">
+                  <i class="fas fa-star text-yellow-500"></i>
+                  <i class="fas fa-star text-yellow-500"></i>
+                  <i class="fas fa-star text-yellow-500"></i>
+                  <i class="fas fa-star text-yellow-500"></i>
+                  <i class="far fa-star text-yellow-500"></i>
+                </div>
+              </div>
+            </div>
+            <span class="text-sm text-gray-400">1 week ago</span>
+          </div>
+          <p class="text-gray-300">Very fun game, but a bit too difficult at higher levels. Hope the developers adjust the difficulty curve.</p>
+        </div>
+        
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <div class="flex items-center">
+              <img src="https://via.placeholder.com/40" alt="User Avatar" class="w-10 h-10 rounded-full mr-3">
+              <div>
+                <h4 class="font-medium">Username3</h4>
+                <div class="flex space-x-1">
+                  <i class="fas fa-star text-yellow-500"></i>
+                  <i class="fas fa-star text-yellow-500"></i>
+                  <i class="fas fa-star text-yellow-500"></i>
+                  <i class="far fa-star text-yellow-500"></i>
+                  <i class="far fa-star text-yellow-500"></i>
+                </div>
+              </div>
+            </div>
+            <span class="text-sm text-gray-400">2 weeks ago</span>
+          </div>
+          <p class="text-gray-300">Not bad for a casual game, but lacks depth. Got bored after playing a few times.</p>
+        </div>
+      </div>
+      
+      <div class="flex justify-center mt-6">
+        <button class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md">Load More Comments</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-8 border-t border-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-white font-bold mb-4">GameHub</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-game-accent">About Us</a></li>
+            <li><a href="#" class="hover:text-game-accent">Contact</a></li>
+            <li><a href="#" class="hover:text-game-accent">Careers</a></li>
+            <li><a href="#" class="hover:text-game-accent">Press</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Developers</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-game-accent">Publish Games</a></li>
+            <li><a href="#" class="hover:text-game-accent">Developer API</a></li>
+            <li><a href="#" class="hover:text-game-accent">Documentation</a></li>
+            <li><a href="#" class="hover:text-game-accent">Community</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Support</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-game-accent">Help Center</a></li>
+            <li><a href="#" class="hover:text-game-accent">Terms of Service</a></li>
+            <li><a href="#" class="hover:text-game-accent">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-game-accent">Cookie Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-4">Connect</h3>
+          <div class="flex space-x-4 mb-4">
+            <a href="#" class="text-gray-400 hover:text-game-accent text-xl"><i class="fab fa-discord"></i></a>
+            <a href="#" class="text-gray-400 hover:text-game-accent text-xl"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-gray-400 hover:text-game-accent text-xl"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="text-gray-400 hover:text-game-accent text-xl"><i class="fab fa-tiktok"></i></a>
+          </div>
+          <p>Join our Discord community!</p>
+          <a href="#" class="inline-block mt-2 bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md">Join Discord</a>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-6 text-center">
+        <p>Design by GameHub Team</p>
+        <p class="mt-2">© 2025 GameHub, Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 在DOMContentLoaded事件中初始化分享功能，确保DOM元素已加载
+    document.addEventListener('DOMContentLoaded', function() {
+      // 分享按钮和模态框元素
+      const shareButton = document.getElementById('shareButton');
+      const shareModal = document.getElementById('shareModal');
+      const closeShareModal = document.getElementById('closeShareModal');
+      
+      // 确保元素存在再添加事件监听器
+      if (shareButton && shareModal && closeShareModal) {
+        // 点击分享按钮显示模态框
+        shareButton.addEventListener('click', function() {
+          shareModal.classList.remove('hidden');
+        });
+        
+        // 点击关闭按钮隐藏模态框
+        closeShareModal.addEventListener('click', function() {
+          shareModal.classList.add('hidden');
+        });
+        
+        // 点击模态框外部区域关闭模态框
+        window.addEventListener('click', function(event) {
+          if (event.target === shareModal) {
+            shareModal.classList.add('hidden');
+          }
+        });
+      }
+    });
+    
+    // 分享功能
+    function shareGame(platform) {
+      const gameUrl = window.location.href;
+      const gameTitle = document.title;
+      
+      let shareUrl = '';
+      
+      switch(platform) {
+        case 'twitter':
+          shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(gameUrl)}&text=${encodeURIComponent('I\'m playing ' + gameTitle + ' on GameHub!')}`;
+          break;
+        case 'facebook':
+          shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(gameUrl)}`;
+          break;
+        case 'instagram':
+          // Instagram doesn't have a direct share link API, usually requires their mobile app
+          alert('Please use the Instagram app to share this content');
+          closeShareModal();
+          return;
+        case 'weibo':
+          shareUrl = `http://service.weibo.com/share/share.php?url=${encodeURIComponent(gameUrl)}&title=${encodeURIComponent('I\'m playing ' + gameTitle + ' on GameHub!')}`;
+          break;
+        case 'wechat':
+          // WeChat typically needs QR code generation
+          alert('Please use WeChat scan function to share this content');
+          closeShareModal();
+          return;
+      }
+      
+      if (shareUrl) {
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+        closeShareModal();
+      }
+    }
+    
+    // 复制游戏链接
+    function copyGameLink() {
+      const gameUrl = window.location.href;
+      
+      navigator.clipboard.writeText(gameUrl).then(() => {
+        alert('Game link copied to clipboard!');
+        closeShareModal();
+      }).catch(err => {
+        console.error('Could not copy link: ', err);
+      });
+    }
+    
+    // 关闭分享模态框
+    function closeShareModal() {
+      const shareModal = document.getElementById('shareModal');
+      if (shareModal) {
+        shareModal.classList.add('hidden');
+      }
+    }
+    
+    // 游戏初始化代码
+    window.addEventListener('load', function() {
+      // 游戏初始化代码
+      console.log('Game page loaded');
+    });
+  </script>
+</body>
+</html> 

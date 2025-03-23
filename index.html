@@ -1,0 +1,2904 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GameHub - The Ultimate Gaming Platform</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'game-dark': '#1a1a2e',
+            'game-accent': '#7f5af0',
+            'game-accent-dark': '#6a4cbf',
+            'game-light': '#f8f9fa',
+            'game-card': '#242438',
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .game-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+    
+    .featured-game:hover .featured-overlay {
+      opacity: 1;
+    }
+    
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    
+    .badge-hot {
+      background-color: #ff4d4d;
+      color: white;
+    }
+    
+    .badge-new {
+      background-color: #4dff4d;
+      color: #333;
+    }
+    
+    .badge-featured {
+      background-color: #ffcc00;
+      color: #333;
+    }
+  </style>
+</head>
+<body class="bg-game-dark text-game-light min-h-screen">
+<!-- Featured Games -->
+<section class="py-6 bg-game-card">
+<div class="container mx-auto px-4">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold">Featured Games</h2>
+<a class="text-game-accent hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Featured Game 1 -->
+<div class="relative featured-game overflow-hidden rounded-lg shadow-lg cursor-pointer">
+<img alt="Blobs Plops" class="w-full h-48 object-cover" src="images 3/Blobs Plops.jpg"/>
+<div class="absolute inset-0 bg-black bg-opacity-30"></div>
+<div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+<h3 class="font-bold text-lg">Blobs Plops</h3>
+<p class="text-sm text-gray-200">Classic block-stacking puzzle game</p>
+</div>
+<div class="featured-overlay absolute inset-0 bg-game-accent bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300">
+<a class="bg-white text-game-dark font-bold py-2 px-6 rounded-full hover:bg-gray-200" href="games/action/blobs_plops.html">Play Now</a>
+</div>
+<div class="badge badge-hot">HOT</div>
+</div>
+<!-- Featured Game 2 -->
+<div class="relative featured-game overflow-hidden rounded-lg shadow-lg cursor-pointer">
+<img alt="Orange Bubbles" class="w-full h-48 object-cover" src="images 3/Orange Bubbles.jpg"/>
+<div class="absolute inset-0 bg-black bg-opacity-30"></div>
+<div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+<h3 class="font-bold text-lg">Orange Bubbles</h3>
+<p class="text-sm text-gray-200">Fly through obstacles in this addictive game</p>
+</div>
+<div class="featured-overlay absolute inset-0 bg-game-accent bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300">
+<a class="bg-white text-game-dark font-bold py-2 px-6 rounded-full hover:bg-gray-200" href="games/puzzle/orange_bubbles.html">Play Now</a>
+</div>
+<div class="badge badge-featured">FEATURED</div>
+</div>
+<!-- Featured Game 3 -->
+<div class="relative featured-game overflow-hidden rounded-lg shadow-lg cursor-pointer">
+<img alt="Slacking Gym" class="w-full h-48 object-cover" src="images 3/Happy Dog.jpg"/>
+<div class="absolute inset-0 bg-black bg-opacity-30"></div>
+<div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+<h3 class="font-bold text-lg">Slacking Gym</h3>
+<p class="text-sm text-gray-200">The iconic maze chase arcade game</p>
+</div>
+<div class="featured-overlay absolute inset-0 bg-game-accent bg-opacity-80 flex items-center justify-center opacity-0 transition-opacity duration-300">
+<a class="bg-white text-game-dark font-bold py-2 px-6 rounded-full hover:bg-gray-200" href="games/action/slacking_gym.html">Play Now</a>
+</div>
+<div class="badge badge-new">NEW</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Weekly Badge Challenge -->
+<section class="py-4 bg-gray-900">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row items-center justify-center py-2">
+<div class="flex items-center mb-3 md:mb-0 md:mr-8">
+<img alt="Badge" class="h-12 w-12 rounded-full mr-3" src="https://via.placeholder.com/60"/>
+<div>
+<h3 class="font-bold">This week's badge: <span class="text-game-accent">Pixel Master</span></h3>
+<p class="text-sm text-gray-400">Complete the Badge of the Day challenge</p>
+</div>
+</div>
+<a class="bg-game-accent hover:bg-game-accent-dark px-4 py-2 rounded-md text-white" href="#">Earn Now</a>
+</div>
+</div>
+</section>
+<!-- Main Content -->
+<main>
+<div class="flex flex-col md:flex-row container mx-auto px-4 py-8">
+<!-- Left Sidebar -->
+<div class="md:w-1/4 pr-6 mb-8 md:mb-0">
+<!-- Logo -->
+<div class="flex items-center mb-6">
+<i class="fas fa-gamepad text-game-accent text-3xl mr-2"></i>
+<span class="text-2xl font-bold">GameHub</span>
+</div>
+<!-- Game Categories -->
+<div class="mb-6">
+<h3 class="text-lg font-bold mb-3">Game Categories</h3>
+<ul class="space-y-2">
+<!-- More下拉菜单 -->
+<li><a class="hover:text-game-accent transition-colors duration-200 category-link text-game-accent font-bold" data-category="all-games" href="javascript:void(0);">All Games</a></li><li><a class="hover:text-game-accent transition-colors duration-200 category-link" data-category="action" href="javascript:void(0);">Action</a></li><li><a class="hover:text-game-accent transition-colors duration-200 category-link" data-category="shooter" href="javascript:void(0);">Shooter</a></li><li><a class="hover:text-game-accent transition-colors duration-200 category-link" data-category="multiplayer" href="javascript:void(0);">Multiplayer</a></li><li><a class="hover:text-game-accent transition-colors duration-200 category-link" data-category="adventure" href="javascript:void(0);">Adventure &amp; RPG</a></li><li><a class="hover:text-game-accent transition-colors duration-200 category-link" data-category="sports" href="javascript:void(0);">Sports &amp; Racing</a></li><li class="relative group"><a class="flex items-center hover:text-game-accent" href="#">More <i class="fas fa-chevron-down ml-1 text-xs"></i></a><div class="absolute left-0 mt-2 w-48 bg-game-card rounded-md shadow-lg hidden group-hover:block z-10"><ul class="py-2"><li><a class="block px-4 py-2 hover:bg-gray-800 hover:text-game-accent transition-colors duration-200 category-link" data-category="strategy" href="javascript:void(0);">Strategy &amp; Defense</a></li><li><a class="block px-4 py-2 hover:bg-gray-800 hover:text-game-accent transition-colors duration-200 category-link" data-category="puzzle" href="javascript:void(0);">Puzzle</a></li><li><a class="block px-4 py-2 hover:bg-gray-800 hover:text-game-accent transition-colors duration-200 category-link" data-category="idle" href="javascript:void(0);">Idle</a></li></ul></div></li></ul>
+</div>
+<!-- Social Media Sharing -->
+<div class="mb-6">
+<h3 class="text-lg font-bold mb-3">Share</h3>
+<div class="flex space-x-4">
+<a class="text-gray-400 hover:text-game-accent transition-colors duration-200" href="https://twitter.com/intent/tweet?url=https://gamehub.com&amp;text=Check out this awesome gaming site!" target="_blank" title="Share on Twitter">
+<i class="fab fa-twitter"></i>
+</a>
+<a class="text-gray-400 hover:text-game-accent transition-colors duration-200" href="https://www.facebook.com/sharer/sharer.php?u=https://gamehub.com" target="_blank" title="Share on Facebook">
+<i class="fab fa-facebook-f"></i>
+</a>
+<a class="text-gray-400 hover:text-game-accent transition-colors duration-200" href="https://www.instagram.com/" target="_blank" title="Share on Instagram">
+<i class="fab fa-instagram"></i>
+</a>
+<a class="text-gray-400 hover:text-game-accent transition-colors duration-200" href="https://service.weibo.com/share/share.php?url=https://gamehub.com&amp;title=Check out this awesome gaming site!" target="_blank" title="Share on Weibo">
+<i class="fab fa-weibo"></i>
+</a>
+<a class="text-gray-400 hover:text-game-accent transition-colors duration-200" href="#" onclick="alert('Please take a screenshot to share on WeChat');return false;" title="Share on WeChat">
+<i class="fab fa-weixin"></i>
+</a>
+</div>
+</div>
+<!-- About GameHub -->
+<div>
+<h3 class="text-lg font-bold mb-3">About GameHub</h3>
+<p class="text-gray-300 mb-3 text-sm">
+          Looking for the best place to play free online games? GameHub offers thousands of games across genres, from action-packed shooters to immersive role-playing adventures. Whether you enjoy competitive strategy games, fast-paced arcade thrills, or relaxing puzzles, we have something for every gamer.
+        </p>
+<p class="text-gray-300 text-sm">
+          GameHub is also a hub for indie developers, featuring unique games you won't find anywhere else. Support independent creators and explore hidden gems that redefine online gaming. New titles are added weekly, so there's always something fresh to play!
+        </p>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="md:w-3/4">
+<!-- Popular Games Section -->
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold">Popular Games</h2>
+<div class="flex items-center">
+<span class="mr-2">Sort by:</span>
+<select class="bg-gray-800 text-white rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-game-accent">
+<option>Most Played</option>
+<option>Top Rated</option>
+<option>Newest</option>
+</select>
+</div>
+</div>
+<!-- Game Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="games-container"><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/dices_2048_3d.html">
+<div class="relative">
+<img alt="Dices 2048 3D" class="w-full h-40 object-cover" src="images 3/Dices 2048 3D.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Dices 2048 3D</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.5</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">32.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/maze.html">
+<div class="relative">
+<img alt="Maze" class="w-full h-40 object-cover" src="images 3/Maze.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Maze</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">20.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/super_plumber_run.html">
+<div class="relative">
+<img alt="Super Plumber Run" class="w-full h-40 object-cover" src="images 3/Super Plumber Run.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Super Plumber Run</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">8.5k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/garden_bloom.html">
+<div class="relative">
+<img alt="Garden Bloom" class="w-full h-40 object-cover" src="images 3/Garden Bloom.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Garden Bloom</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">34.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/my_fairytale_deer.html">
+<div class="relative">
+<img alt="My Fairytale Deer" class="w-full h-40 object-cover" src="images 3/My Fairytale Deer.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">My Fairytale Deer</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">15.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/twins.html">
+<div class="relative">
+<img alt="Twins" class="w-full h-40 object-cover" src="images 3/Twins.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Twins</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">21.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/pair_up_3d.html">
+<div class="relative">
+<img alt="Pair Up 3D" class="w-full h-40 object-cover" src="images 3/Pair Up 3D.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Pair Up 3D</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">35.4k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/neon_swing.html">
+<div class="relative">
+<img alt="Neon Swing" class="w-full h-40 object-cover" src="images 3/Neon Swing.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Neon Swing</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.3</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">32.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/basket_monsterz.html">
+<div class="relative">
+<img alt="Basket Monsterz" class="w-full h-40 object-cover" src="images 3/Basket Monsterz.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Basket Monsterz</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.3</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">26.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/giant_rush.html">
+<div class="relative">
+<img alt="Giant Rush" class="w-full h-40 object-cover" src="images 3/Giant Rush.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Giant Rush</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.3</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">42.8k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/bananamania.html">
+<div class="relative">
+<img alt="Bananamania" class="w-full h-40 object-cover" src="images 3/Bananamania.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Bananamania</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">26.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/emoji_fun.html">
+<div class="relative">
+<img alt="Emoji Fun" class="w-full h-40 object-cover" src="images 3/Emoji Fun.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Emoji Fun</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">10.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/bravebull_pirates.html">
+<div class="relative">
+<img alt="Bravebull Pirates" class="w-full h-40 object-cover" src="images 3/Bravebull Pirates.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Bravebull Pirates</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">5.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">26.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/hiddentastic_mansion.html">
+<div class="relative">
+<img alt="Hiddentastic Mansion" class="w-full h-40 object-cover" src="images 3/Hiddentastic Mansion.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Hiddentastic Mansion</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">31.4k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/peet_a_lock.html">
+<div class="relative">
+<img alt="Peet A Lock" class="w-full h-40 object-cover" src="images 3/Peet a Lock.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Peet A Lock</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">7.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/happy_fox.html">
+<div class="relative">
+<img alt="Happy Fox" class="w-full h-40 object-cover" src="images 3/Happy Fox.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Happy Fox</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">20.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/office_love.html">
+<div class="relative">
+<img alt="Office Love" class="w-full h-40 object-cover" src="images 3/Office Love.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Office Love</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">11.4k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/moto_fury.html">
+<div class="relative">
+<img alt="Moto Fury" class="w-full h-40 object-cover" src="images 3/Moto Fury.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Moto Fury</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.7</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">11.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/sery_runway_dolly.html">
+<div class="relative">
+<img alt="Sery Runway Dolly" class="w-full h-40 object-cover" src="images 3/Sery Runway Dolly.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Sery Runway Dolly</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.7</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">11.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/sort_bird.html">
+<div class="relative">
+<img alt="Sort Bird" class="w-full h-40 object-cover" src="images 3/Sort Bird.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Sort Bird</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">45.8k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/super_loom_dragonscale.html">
+<div class="relative">
+<img alt="Super Loom Dragonscale" class="w-full h-40 object-cover" src="images 3/Super Loom_ Dragonscale.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Super Loom Dragonscale</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.3</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/fancy_diver.html">
+<div class="relative">
+<img alt="Fancy Diver" class="w-full h-40 object-cover" src="images 3/Fancy Diver.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Fancy Diver</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">37.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/sushi_ninja_dash.html">
+<div class="relative">
+<img alt="Sushi Ninja Dash" class="w-full h-40 object-cover" src="images 3/Sushi Ninja Dash.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Sushi Ninja Dash</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">14.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/mafia_poker.html">
+<div class="relative">
+<img alt="Mafia Poker" class="w-full h-40 object-cover" src="images 3/Mafia Poker.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Mafia Poker</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.3</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">47.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/little_shop_of_treasures.html">
+<div class="relative">
+<img alt="Little Shop Of Treasures" class="w-full h-40 object-cover" src="images 3/Little Shop Of Treasures.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Little Shop Of Treasures</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.8k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/football_tricks.html">
+<div class="relative">
+<img alt="Football Tricks" class="w-full h-40 object-cover" src="images 3/Football Tricks World Cup 2014.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Football Tricks</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.3</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">37.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/jungle_roller.html">
+<div class="relative">
+<img alt="Jungle Roller" class="w-full h-40 object-cover" src="images 3/Jungle Roller.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Jungle Roller</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.4</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">19.5k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/pets_rush.html">
+<div class="relative">
+<img alt="Pets Rush" class="w-full h-40 object-cover" src="images 3/Pets Rush.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Pets Rush</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">23.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/zombies_eat_my_stocking.html">
+<div class="relative">
+<img alt="Zombies Eat My Stocking" class="w-full h-40 object-cover" src="images 3/Zombies Eat My Stocking.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Zombies Eat My Stocking</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">29.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/good_shelves.html">
+<div class="relative">
+<img alt="Good Shelves" class="w-full h-40 object-cover" src="images 3/Good Shelves.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Good Shelves</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.4</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">50.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/kk_tri_towers_solitaire.html">
+<div class="relative">
+<img alt="Kk Tri Towers Solitaire" class="w-full h-40 object-cover" src="images 3/Klondike Solitaire.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Kk Tri Towers Solitaire</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">14.8k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/knife_rain.html">
+<div class="relative">
+<img alt="Knife Rain" class="w-full h-40 object-cover" src="images 3/Knife Rain.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Knife Rain</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">16.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action">
+<a class="block" href="games/action/snow_smasher.html">
+<div class="relative">
+<img alt="Snow Smasher" class="w-full h-40 object-cover" src="images 3/Snow Smasher.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Snow Smasher</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.3</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">13.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/jelly_collapse.html">
+<div class="relative">
+<img alt="Jelly Collapse" class="w-full h-40 object-cover" src="images 3/Jelly Collapse.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Jelly Collapse</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">22.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/happy_elephant.html">
+<div class="relative">
+<img alt="Happy Elephant" class="w-full h-40 object-cover" src="images 3/Happy Elephant.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Happy Elephant</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.2</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">16.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/halloween_lily.html">
+<div class="relative">
+<img alt="Halloween Lily" class="w-full h-40 object-cover" src="images 3/Halloween Lily.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Halloween Lily</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">50.5k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/pick_a_lock.html">
+<div class="relative">
+<img alt="Pick A Lock" class="w-full h-40 object-cover" src="images 3/Pick A Lock.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Pick A Lock</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.7</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">42.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/angry_flappy_wings.html">
+<div class="relative">
+<img alt="Angry Flappy Wings" class="w-full h-40 object-cover" src="images 3/Angry Flappy Wings.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Angry Flappy Wings</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.5</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">1.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/colorpop.html">
+<div class="relative">
+<img alt="Colorpop" class="w-full h-40 object-cover" src="images 3/Colorpop.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Colorpop</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.2</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">47.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/fast_circles.html">
+<div class="relative">
+<img alt="Fast Circles" class="w-full h-40 object-cover" src="images 3/Fast Circles.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Fast Circles</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">47.5k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/goal_champion.html">
+<div class="relative">
+<img alt="Goal Champion" class="w-full h-40 object-cover" src="images 3/Goal Champion.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Goal Champion</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">19.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/jewel_aquarium.html">
+<div class="relative">
+<img alt="Jewel Aquarium" class="w-full h-40 object-cover" src="images 3/Jewel Aquarium.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Jewel Aquarium</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">37.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/thug_racer.html">
+<div class="relative">
+<img alt="Thug Racer" class="w-full h-40 object-cover" src="images 3/Thug Racer.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Thug Racer</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">5.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">44.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/ultimate_boxing.html">
+<div class="relative">
+<img alt="Ultimate Boxing" class="w-full h-40 object-cover" src="images 3/Ultimate Boxing.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Ultimate Boxing</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">11.5k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/slacking_cafeteria.html">
+<div class="relative">
+<img alt="Slacking Cafeteria" class="w-full h-40 object-cover" src="images 3/Slacking Cafeteria.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Slacking Cafeteria</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">50.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="action" style="display: none;">
+<a class="block" href="games/action/blobs_plops.html">
+<div class="relative">
+<img alt="Blobs Plops" class="w-full h-40 object-cover" src="images 3/Blobs Plops.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Action</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Blobs Plops</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">20.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/chess_classic.html">
+<div class="relative">
+<img alt="Chess Classic" class="w-full h-40 object-cover" src="images 3/Chess Classic.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Chess Classic</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.5</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">41.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/fairy_cards.html">
+<div class="relative">
+<img alt="Fairy Cards" class="w-full h-40 object-cover" src="images 3/Fairy Cards.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Fairy Cards</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">27.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/orange_bubbles.html">
+<div class="relative">
+<img alt="Orange Bubbles" class="w-full h-40 object-cover" src="images 3/Orange Bubbles.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Orange Bubbles</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.2</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">6.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/onet_connect_classic.html">
+<div class="relative">
+<img alt="Onet Connect Classic" class="w-full h-40 object-cover" src="images 3/Onet Connect Classic.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Onet Connect Classic</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">20.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/mini_putt_forest.html">
+<div class="relative">
+<img alt="Mini Putt Forest" class="w-full h-40 object-cover" src="images 3/Mahjong Classic.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Mini Putt Forest</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">21.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/tm_amanda.html">
+<div class="relative">
+<img alt="Tm Amanda" class="w-full h-40 object-cover" src="images 3/Basketball.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Amanda</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.7</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">49.5k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/solitaire_classic_easter.html">
+<div class="relative">
+<img alt="Solitaire Classic Easter" class="w-full h-40 object-cover" src="images 3/Solitaire Classic Easter.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Solitaire Classic Easter</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">17.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/smarty_bubbles_xmas.html">
+<div class="relative">
+<img alt="Smarty Bubbles Xmas" class="w-full h-40 object-cover" src="images 3/Smarty Bubbles.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Smarty Bubbles Xmas</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">10.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/highjump.html">
+<div class="relative">
+<img alt="Highjump" class="w-full h-40 object-cover" src="images 3/Kiba &amp; Kumba_ High Jump.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Highjump</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.3</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">33.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/jigsaw_puzzle_xmas.html">
+<div class="relative">
+<img alt="Jigsaw Puzzle Xmas" class="w-full h-40 object-cover" src="images 3/Jigsaw Puzzle XMas.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Jigsaw Puzzle Xmas</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">9.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/defly.html">
+<div class="relative">
+<img alt="Defly" class="w-full h-40 object-cover" src="images 3/Defly.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Defly</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.7</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">46.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/4x_puzzle.html">
+<div class="relative">
+<img alt="4X Puzzle" class="w-full h-40 object-cover" src="images 3/4x Puzzle.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">4X Puzzle</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">16.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="puzzle" style="display: none;">
+<a class="block" href="games/puzzle/mahjong_mania.html">
+<div class="relative">
+<img alt="Mahjong Mania" class="w-full h-40 object-cover" src="images 3/Mahjong Mania.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Puzzle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Mahjong Mania</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">9.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="strategy" style="display: none;">
+<a class="block" href="games/strategy/tower_smash.html">
+<div class="relative">
+<img alt="Tower Smash" class="w-full h-40 object-cover" src="images 3/Tower Smash.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Strategy &amp; Defense</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tower Smash</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">25.4k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="strategy" style="display: none;">
+<a class="block" href="games/strategy/tm_taylor.html">
+<div class="relative">
+<img alt="Tm Taylor" class="w-full h-40 object-cover" src="images 3/Save the Princess.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Strategy &amp; Defense</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Taylor</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">21.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="strategy" style="display: none;">
+<a class="block" href="games/strategy/tower_smash_level.html">
+<div class="relative">
+<img alt="Tower Smash Level" class="w-full h-40 object-cover" src="images 3/Tower Smash Level.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Strategy &amp; Defense</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tower Smash Level</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">35.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="strategy" style="display: none;">
+<a class="block" href="games/strategy/timber_man.html">
+<div class="relative">
+<img alt="Timber Man" class="w-full h-40 object-cover" src="images 3/Timberman.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Strategy &amp; Defense</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Timber Man</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.2</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">17.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="strategy" style="display: none;">
+<a class="block" href="games/strategy/nut_rush2.html">
+<div class="relative">
+<img alt="Nut Rush2" class="w-full h-40 object-cover" src="images 3/Nut Rush 2_ Summer Sprint.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Strategy &amp; Defense</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Nut Rush2</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">6.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="strategy" style="display: none;">
+<a class="block" href="games/strategy/kitten_game.html">
+<div class="relative">
+<img alt="Kitten Game" class="w-full h-40 object-cover" src="images 3/Tile Journey.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Strategy &amp; Defense</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Kitten Game</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">38.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="strategy" style="display: none;">
+<a class="block" href="games/strategy/pizza_margherita.html">
+<div class="relative">
+<img alt="Pizza Margherita" class="w-full h-40 object-cover" src="images 3/Pizza Margherita - Cooking with Emma.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Strategy &amp; Defense</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Pizza Margherita</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.7</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">13.4k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="strategy" style="display: none;">
+<a class="block" href="games/strategy/vegetable_lasagna.html">
+<div class="relative">
+<img alt="Vegetable Lasagna" class="w-full h-40 object-cover" src="images 3/Vegetable Lasagna - Cooking with Emma.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Strategy &amp; Defense</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Vegetable Lasagna</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">11.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="strategy" style="display: none;">
+<a class="block" href="games/strategy/stones_of_pharaoh.html">
+<div class="relative">
+<img alt="Stones Of Pharaoh" class="w-full h-40 object-cover" src="images 3/Stair Race 3D.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Strategy &amp; Defense</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Stones Of Pharaoh</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">34.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="strategy" style="display: none;">
+<a class="block" href="games/strategy/dragon_fire_and_fury.html">
+<div class="relative">
+<img alt="Dragon Fire And Fury" class="w-full h-40 object-cover" src="images 3/Pop It! Duel.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Strategy &amp; Defense</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Dragon Fire And Fury</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">15.4k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="adventure" style="display: none;">
+<a class="block" href="games/adventure/mini_putt_garden.html">
+<div class="relative">
+<img alt="Mini Putt Garden" class="w-full h-40 object-cover" src="images 3/Dance Battle.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Adventure &amp; RPG</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Mini Putt Garden</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">28.5k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="adventure" style="display: none;">
+<a class="block" href="games/adventure/potato_salad.html">
+<div class="relative">
+<img alt="Potato Salad" class="w-full h-40 object-cover" src="images 3/Potato Salad - Cooking with Emma.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Adventure &amp; RPG</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Potato Salad</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">42.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="adventure" style="display: none;">
+<a class="block" href="games/adventure/tm_rosie.html">
+<div class="relative">
+<img alt="Tm Rosie" class="w-full h-40 object-cover" src="images 3/Onet Gallery 3D.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Adventure &amp; RPG</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Rosie</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">28.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="adventure" style="display: none;">
+<a class="block" href="games/adventure/lovetester.html">
+<div class="relative">
+<img alt="Lovetester" class="w-full h-40 object-cover" src="images 3/Love Tester.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Adventure &amp; RPG</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Lovetester</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.7</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">24.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="adventure" style="display: none;">
+<a class="block" href="games/adventure/adventure_drivers.html">
+<div class="relative">
+<img alt="Adventure Drivers" class="w-full h-40 object-cover" src="images 3/Adventure Drivers.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Adventure &amp; RPG</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Adventure Drivers</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">38.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="adventure" style="display: none;">
+<a class="block" href="games/adventure/winter_adventures.html">
+<div class="relative">
+<img alt="Winter Adventures" class="w-full h-40 object-cover" src="images 3/Winter Adventures.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Adventure &amp; RPG</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Winter Adventures</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">42.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/cute_puppy_care.html">
+<div class="relative">
+<img alt="Cute Puppy Care" class="w-full h-40 object-cover" src="images 3/Cute Puppy Care.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Cute Puppy Care</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">5.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">13.5k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/butterfly_chocolate_cake.html">
+<div class="relative">
+<img alt="Butterfly Chocolate Cake" class="w-full h-40 object-cover" src="images 3/Butterfly Chocolate Cake - Cooking with Emma.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Butterfly Chocolate Cake</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">15.5k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/cooking_super_girls.html">
+<div class="relative">
+<img alt="Cooking Super Girls" class="w-full h-40 object-cover" src="images 3/Cooking Super Girls_ Cupcakes.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Cooking Super Girls</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.2</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">8.8k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/tm_christina.html">
+<div class="relative">
+<img alt="Tm Christina" class="w-full h-40 object-cover" src="images 3/Cute Puppy Care.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Christina</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">5.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">16.4k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/cartoon_flight.html">
+<div class="relative">
+<img alt="Cartoon Flight" class="w-full h-40 object-cover" src="images 3/Cartoon Flight.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Cartoon Flight</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">45.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/soccertastic_world_cup_18.html">
+<div class="relative">
+<img alt="Soccertastic World Cup 18" class="w-full h-40 object-cover" src="images 3/Soccertastic World Cup 18.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Soccertastic World Cup 18</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">14.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/slam_dunk_basketball.html">
+<div class="relative">
+<img alt="Slam Dunk Basketball" class="w-full h-40 object-cover" src="images 3/Slam Dunk Basketball.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Slam Dunk Basketball</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">25.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/civilizations_wars_all_stars.html">
+<div class="relative">
+<img alt="Civilizations Wars All Stars" class="w-full h-40 object-cover" src="images 3/Pair Up 3D.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Civilizations Wars All Stars</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">25.8k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/tm_demi.html">
+<div class="relative">
+<img alt="Tm Demi" class="w-full h-40 object-cover" src="images 3/Happy Pony.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Demi</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">40.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/french_apple_pie_vegan.html">
+<div class="relative">
+<img alt="French Apple Pie Vegan" class="w-full h-40 object-cover" src="images 3/Angry Necromancer.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">French Apple Pie Vegan</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.9</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">12.8k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/puppy_maker.html">
+<div class="relative">
+<img alt="Puppy Maker" class="w-full h-40 object-cover" src="images 3/Key &amp; Shield.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Puppy Maker</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">5.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">45.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/tm_kelly.html">
+<div class="relative">
+<img alt="Tm Kelly" class="w-full h-40 object-cover" src="images 3/Color Pixel Art Classic.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Kelly</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">43.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="sports" style="display: none;">
+<a class="block" href="games/sports/sushi_rolls.html">
+<div class="relative">
+<img alt="Sushi Rolls" class="w-full h-40 object-cover" src="images 3/Sushi Roll.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Sports &amp; Racing</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Sushi Rolls</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.4</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">27.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="multiplayer" style="display: none;">
+<a class="block" href="games/multiplayer/barbara_and_kent.html">
+<div class="relative">
+<img alt="Barbara And Kent" class="w-full h-40 object-cover" src="images 3/Dominoes Classic.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Multiplayer</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Barbara And Kent</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.5</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">40.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="multiplayer" style="display: none;">
+<a class="block" href="games/multiplayer/rm_maria.html">
+<div class="relative">
+<img alt="Rm Maria" class="w-full h-40 object-cover" src="images 3/Bunny Quest.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Multiplayer</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Rm Maria</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">40.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="multiplayer" style="display: none;">
+<a class="block" href="games/multiplayer/zucchini_spaghetti_bolognese.html">
+<div class="relative">
+<img alt="Zucchini Spaghetti Bolognese" class="w-full h-40 object-cover" src="images 3/Zucchini Spaghetti Bolognese - Cooking with Emma.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Multiplayer</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Zucchini Spaghetti Bolognese</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.5</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">18.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="multiplayer" style="display: none;">
+<a class="block" href="games/multiplayer/sprint_club_nitro.html">
+<div class="relative">
+<img alt="Sprint Club Nitro" class="w-full h-40 object-cover" src="images 3/Summer Lily.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Multiplayer</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Sprint Club Nitro</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">10.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="multiplayer" style="display: none;">
+<a class="block" href="games/multiplayer/3d_air_hockey.html">
+<div class="relative">
+<img alt="3D Air Hockey" class="w-full h-40 object-cover" src="images 3/3D Air Hockey.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Multiplayer</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">3D Air Hockey</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">5.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">41.4k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="multiplayer" style="display: none;">
+<a class="block" href="games/multiplayer/freaking_math.html">
+<div class="relative">
+<img alt="Freaking Math" class="w-full h-40 object-cover" src="images 3/FreakingMath.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Multiplayer</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Freaking Math</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">38.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="multiplayer" style="display: none;">
+<a class="block" href="games/multiplayer/kk_shadow_run.html">
+<div class="relative">
+<img alt="Kk Shadow Run" class="w-full h-40 object-cover" src="images 3/Pair Up 3D.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Multiplayer</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Kk Shadow Run</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.7</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">29.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="multiplayer" style="display: none;">
+<a class="block" href="games/multiplayer/jewel_duel.html">
+<div class="relative">
+<img alt="Jewel Duel" class="w-full h-40 object-cover" src="images 3/Jewel Duel.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Multiplayer</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Jewel Duel</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">44.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="multiplayer" style="display: none;">
+<a class="block" href="games/multiplayer/tm_nina.html">
+<div class="relative">
+<img alt="Tm Nina" class="w-full h-40 object-cover" src="images 3/Drag Racing Club.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Multiplayer</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Nina</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.7</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">9.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="idle" style="display: none;">
+<a class="block" href="games/idle/baked_apples.html">
+<div class="relative">
+<img alt="Baked Apples" class="w-full h-40 object-cover" src="images 3/Baked Apples - Cooking with Emma.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Idle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Baked Apples</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">5.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">6.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="idle" style="display: none;">
+<a class="block" href="games/idle/what_does_your_bf_look_like.html">
+<div class="relative">
+<img alt="What Does Your Bf Look Like" class="w-full h-40 object-cover" src="images 3/Tri Peaks Solitaire Classic.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Idle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">What Does Your Bf Look Like</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.5</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">48.1k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="idle" style="display: none;">
+<a class="block" href="games/idle/tm_dakota.html">
+<div class="relative">
+<img alt="Tm Dakota" class="w-full h-40 object-cover" src="images 3/Fruit Crush Frenzy.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Idle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Dakota</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">13.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="idle" style="display: none;">
+<a class="block" href="games/idle/tm_lana.html">
+<div class="relative">
+<img alt="Tm Lana" class="w-full h-40 object-cover" src="images 3/Protect The Planet.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Idle</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Lana</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">20.6k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/tm_jennifer1.html">
+<div class="relative">
+<img alt="Tm Jennifer1" class="w-full h-40 object-cover" src="images 3/Tina Ballet Star.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Jennifer1</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.5</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">34.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/key_and_shield.html">
+<div class="relative">
+<img alt="Key And Shield" class="w-full h-40 object-cover" src="images 3/3D Penalty.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Key And Shield</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.2</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">1.4k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/tm_selena.html">
+<div class="relative">
+<img alt="Tm Selena" class="w-full h-40 object-cover" src="images 3/Wild West Solitaire.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Selena</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.5</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">33.5k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/kk_jungle_chaos.html">
+<div class="relative">
+<img alt="Kk Jungle Chaos" class="w-full h-40 object-cover" src="images 3/Color Water Sort 3D.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Kk Jungle Chaos</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.4</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">47.4k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/speed_pool_king.html">
+<div class="relative">
+<img alt="Speed Pool King" class="w-full h-40 object-cover" src="images 3/Nut Rush 3 - Snow Scramble.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Speed Pool King</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.7</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">16.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/tm_roxelane.html">
+<div class="relative">
+<img alt="Tm Roxelane" class="w-full h-40 object-cover" src="images 3/3D Free Kick World Cup 18.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Roxelane</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.8</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">7.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/princess_goldblade.html">
+<div class="relative">
+<img alt="Princess Goldblade" class="w-full h-40 object-cover" src="images 3/Princess Goldblade And The Dangerous Water.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Princess Goldblade</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.1</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">34.8k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/tm_vanessa.html">
+<div class="relative">
+<img alt="Tm Vanessa" class="w-full h-40 object-cover" src="images 3/Baboo_ Rainbow Puzzle.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Vanessa</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">41.3k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/tm_kristen.html">
+<div class="relative">
+<img alt="Tm Kristen" class="w-full h-40 object-cover" src="images 3/Chip Family.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Kristen</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.4</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">9.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/kk_jigsaw_puzzle.html">
+<div class="relative">
+<img alt="Kk Jigsaw Puzzle" class="w-full h-40 object-cover" src="images 3/3D Penalty.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Kk Jigsaw Puzzle</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">40.2k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/11_11.html">
+<div class="relative">
+<img alt="11 11" class="w-full h-40 object-cover" src="images 3/Mini Putt Gem Garden.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">11 11</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.6</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">40.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/tm_jennifer2.html">
+<div class="relative">
+<img alt="Tm Jennifer2" class="w-full h-40 object-cover" src="images 3/Bubble Tower 3D.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Tm Jennifer2</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.3</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">3.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/fruit_swipe.html">
+<div class="relative">
+<img alt="Fruit Swipe" class="w-full h-40 object-cover" src="images 3/Moto X3M.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Fruit Swipe</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.2</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">1.7k</span>
+</div>
+</div>
+</div>
+</a>
+</div><div class="bg-game-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" data-category="shooter" style="display: none;">
+<a class="block" href="games/shooter/wordguess_4images.html">
+<div class="relative">
+<img alt="Wordguess 4Images" class="w-full h-40 object-cover" src="images 3/Bubble Tower 3D.jpg"/>
+<span class="absolute top-2 right-2 bg-game-accent text-white text-xs px-2 py-1 rounded">Shooter</span>
+</div>
+<div class="p-4">
+<h3 class="font-bold text-white mb-2 truncate">Wordguess 4Images</h3>
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<i class="fas fa-star text-yellow-400 mr-1"></i>
+<span class="text-gray-300 text-sm">4.0</span>
+</div>
+<div class="flex items-center">
+<i class="fas fa-play text-gray-400 mr-1"></i>
+<span class="text-gray-300 text-sm">25.9k</span>
+</div>
+</div>
+</div>
+</a>
+</div></div>
+<!-- Load More Button -->
+<div class="flex justify-center mt-8 mb-4">
+<button class="bg-game-accent hover:bg-game-accent-dark text-white px-6 py-2 rounded-md font-medium" id="loadMoreBtn">
+          Load More Games
+        </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-8 border-t border-gray-800">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-white font-bold mb-4">GameHub</h3>
+<ul class="space-y-2">
+<li><a class="hover:text-game-accent" href="#">About Us</a></li>
+<li><a class="hover:text-game-accent" href="#">Contact</a></li>
+<li><a class="hover:text-game-accent" href="#">Careers</a></li>
+<li><a class="hover:text-game-accent" href="#">Press</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-bold mb-4">Developers</h3>
+<ul class="space-y-2">
+<li><a class="hover:text-game-accent" href="#">Publish Games</a></li>
+<li><a class="hover:text-game-accent" href="#">Developer API</a></li>
+<li><a class="hover:text-game-accent" href="#">Documentation</a></li>
+<li><a class="hover:text-game-accent" href="#">Community</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-bold mb-4">Support</h3>
+<ul class="space-y-2">
+<li><a class="hover:text-game-accent" href="#">Help Center</a></li>
+<li><a class="hover:text-game-accent" href="#">Terms of Service</a></li>
+<li><a class="hover:text-game-accent" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-game-accent" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-white font-bold mb-4">Connect With Us</h3>
+<div class="flex space-x-4 mb-4">
+<a class="text-gray-400 hover:text-game-accent text-xl" href="#"><i class="fab fa-facebook"></i></a>
+<a class="text-gray-400 hover:text-game-accent text-xl" href="#"><i class="fab fa-twitter"></i></a>
+<a class="text-gray-400 hover:text-game-accent text-xl" href="#"><i class="fab fa-instagram"></i></a>
+<a class="text-gray-400 hover:text-game-accent text-xl" href="#"><i class="fab fa-youtube"></i></a>
+<a class="text-gray-400 hover:text-game-accent text-xl" href="#"><i class="fab fa-tiktok"></i></a>
+</div>
+<p>Join our Discord community!</p>
+<a class="inline-block mt-2 bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md" href="#">Join Discord</a>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-8 pt-6 text-center">
+<p>Design by GameHub Team</p>
+<p class="mt-2">© 2025 GameHub, Inc. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+<!-- JavaScript for functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 获取所有分类链接
+      const categoryLinks = document.querySelectorAll('.category-link');
+      
+      // 获取所有游戏卡片
+      const allGameCards = document.querySelectorAll('#games-container > div.bg-game-card');
+      
+      // 为每个分类链接添加点击事件
+      categoryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // 移除所有链接的激活状态
+          categoryLinks.forEach(l => {
+            l.classList.remove('text-game-accent');
+            l.classList.remove('font-bold');
+          });
+          
+          // 为当前点击的链接添加激活状态
+          this.classList.add('text-game-accent');
+          this.classList.add('font-bold');
+          
+          const selectedCategory = this.getAttribute('data-category');
+          
+          // 显示或隐藏游戏卡片
+          let visibleCount = 0;
+          allGameCards.forEach(card => {
+            // 获取卡片的分类
+            const cardCategory = card.getAttribute('data-category');
+            
+            if (selectedCategory === 'all-games') {
+              // 显示前50个游戏
+              if (visibleCount < 50) {
+                card.style.display = '';
+                visibleCount++;
+              } else {
+                card.style.display = 'none';
+              }
+            } else if (cardCategory === selectedCategory) {
+              // 只显示前50个匹配分类的游戏
+              if (visibleCount < 50) {
+                card.style.display = '';
+                visibleCount++;
+              } else {
+                card.style.display = 'none';
+              }
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          
+          // 更新"Load More"按钮状态
+          const loadMoreBtn = document.getElementById('loadMoreBtn');
+          if (loadMoreBtn) {
+            const hiddenCount = Array.from(allGameCards).filter(card => {
+              if (selectedCategory === 'all-games') {
+                return card.style.display === 'none';
+              } else {
+                return card.getAttribute('data-category') === selectedCategory && card.style.display === 'none';
+              }
+            }).length;
+            
+            if (hiddenCount > 0) {
+              loadMoreBtn.style.display = '';
+            } else {
+              loadMoreBtn.style.display = 'none';
+            }
+          }
+        });
+      });
+      
+      // 加载更多游戏的功能
+      const loadMoreBtn = document.getElementById('loadMoreBtn');
+      if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function() {
+          const allGameCards = document.querySelectorAll('#games-container > div.bg-game-card');
+          const activeLink = document.querySelector('.category-link.text-game-accent');
+          const visibleCategory = activeLink ? activeLink.dataset.category : 'all-games';
+          
+          let visibleCount = 0;
+          let moreCount = 0;
+          
+          // 计算当前可见的卡片数量
+          allGameCards.forEach(card => {
+            if (card.style.display === '') {
+              visibleCount++;
+            }
+          });
+          
+          // 显示更多的卡片
+          allGameCards.forEach(card => {
+            if (card.style.display === 'none') {
+              const cardCategory = card.dataset.category;
+              
+              if (visibleCategory === 'all-games' || cardCategory === visibleCategory) {
+                if (moreCount < 50) {
+                  card.style.display = '';
+                  moreCount++;
+                }
+              }
+            }
+          });
+          
+          // 如果没有更多卡片要显示，隐藏按钮
+          const remainingHidden = Array.from(allGameCards).filter(card => {
+            const cardCategory = card.dataset.category;
+            return card.style.display === 'none' && 
+                  (visibleCategory === 'all-games' || cardCategory === visibleCategory);
+          }).length;
+          
+          if (remainingHidden === 0) {
+            this.style.display = 'none';
+          }
+        });
+      }
+      
+      // 默认触发"All Games"分类的点击事件
+      const allGamesLink = document.querySelector('.category-link[data-category="all-games"]');
+      if (allGamesLink) {
+        allGamesLink.click();
+      }
+    });
+    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 获取所有分类链接
+      const categoryLinks = document.querySelectorAll('.category-link');
+      
+      // 获取所有游戏卡片
+      const allGameCards = document.querySelectorAll('#games-container > div');
+      
+      // 为每个分类链接添加点击事件
+      categoryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // 移除所有链接的激活状态
+          categoryLinks.forEach(l => {
+            l.classList.remove('text-game-accent');
+            l.classList.remove('font-bold');
+          });
+          
+          // 为当前点击的链接添加激活状态
+          this.classList.add('text-game-accent');
+          this.classList.add('font-bold');
+          
+          const selectedCategory = this.getAttribute('data-category');
+          
+          // 显示或隐藏游戏卡片
+          let visibleCount = 0;
+          allGameCards.forEach(card => {
+            // 获取卡片的分类
+            const cardCategory = card.getAttribute('data-category');
+            
+            if (selectedCategory === 'all-games') {
+              // 显示前50个游戏
+              if (visibleCount < 50) {
+                card.style.display = '';
+                visibleCount++;
+              } else {
+                card.style.display = 'none';
+              }
+            } else if (cardCategory === selectedCategory) {
+              // 只显示前50个匹配分类的游戏
+              if (visibleCount < 50) {
+                card.style.display = '';
+                visibleCount++;
+              } else {
+                card.style.display = 'none';
+              }
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          
+          // 更新"Load More"按钮状态
+          const loadMoreBtn = document.getElementById('loadMoreBtn');
+          if (loadMoreBtn) {
+            const hiddenCount = Array.from(allGameCards).filter(card => {
+              if (selectedCategory === 'all-games') {
+                return card.style.display === 'none';
+              } else {
+                return card.getAttribute('data-category') === selectedCategory && card.style.display === 'none';
+              }
+            }).length;
+            
+            if (hiddenCount > 0) {
+              loadMoreBtn.style.display = '';
+            } else {
+              loadMoreBtn.style.display = 'none';
+            }
+          }
+        });
+      });
+      
+      // 默认触发"All Games"分类的点击事件
+      const allGamesLink = document.querySelector('.category-link[data-category="all-games"]');
+      if (allGamesLink) {
+        allGamesLink.click();
+      }
+    });
+    </script><script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 获取所有分类链接
+      const categoryLinks = document.querySelectorAll('.category-link');
+      
+      // 获取所有游戏卡片
+      const allGameCards = document.querySelectorAll('#games-container > div');
+      
+      // 为每个分类链接添加点击事件
+      categoryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // 移除所有链接的激活状态
+          categoryLinks.forEach(l => {
+            l.classList.remove('text-game-accent');
+            l.classList.remove('font-bold');
+          });
+          
+          // 为当前点击的链接添加激活状态
+          this.classList.add('text-game-accent');
+          this.classList.add('font-bold');
+          
+          const selectedCategory = this.getAttribute('data-category');
+          
+          // 显示或隐藏游戏卡片
+          let visibleCount = 0;
+          allGameCards.forEach(card => {
+            if (selectedCategory === 'all-games') {
+              card.classList.remove('hidden');
+              // 只显示前50个游戏
+              if (visibleCount < 50) {
+                card.style.display = '';
+                visibleCount++;
+              } else {
+                card.style.display = 'none';
+              }
+            } else {
+              const cardCategory = card.getAttribute('data-category');
+              if (cardCategory === selectedCategory.replace('-', '')) {
+                card.classList.remove('hidden');
+                // 只显示前50个匹配分类的游戏
+                if (visibleCount < 50) {
+                  card.style.display = '';
+                  visibleCount++;
+                } else {
+                  card.style.display = 'none';
+                }
+              } else {
+                card.classList.add('hidden');
+                card.style.display = 'none';
+              }
+            }
+          });
+          
+          // 更新"Load More"按钮状态
+          const loadMoreBtn = document.getElementById('loadMoreBtn');
+          if (loadMoreBtn) {
+            const hiddenCount = Array.from(allGameCards).filter(card => 
+              !card.classList.contains('hidden') && card.style.display === 'none'
+            ).length;
+            
+            if (hiddenCount > 0) {
+              loadMoreBtn.style.display = '';
+            } else {
+              loadMoreBtn.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+    </script><script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 获取所有分类链接
+      const categoryLinks = document.querySelectorAll('.category-link');
+      
+      // 获取所有游戏卡片
+      const allGameCards = document.querySelectorAll('#games-container > div');
+      
+      // 为每个分类链接添加点击事件
+      categoryLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // 移除所有链接的激活状态
+          categoryLinks.forEach(l => {
+            l.classList.remove('text-game-accent');
+            l.classList.remove('font-bold');
+          });
+          
+          // 为当前点击的链接添加激活状态
+          this.classList.add('text-game-accent');
+          this.classList.add('font-bold');
+          
+          const selectedCategory = this.getAttribute('data-category');
+          
+          // 显示或隐藏游戏卡片
+          let visibleCount = 0;
+          allGameCards.forEach(card => {
+            // 获取卡片的分类
+            const cardCategory = card.getAttribute('data-category');
+            
+            if (selectedCategory === 'all-games') {
+              // 显示前50个游戏
+              if (visibleCount < 50) {
+                card.style.display = '';
+                visibleCount++;
+              } else {
+                card.style.display = 'none';
+              }
+            } else if (cardCategory === selectedCategory) {
+              // 只显示前50个匹配分类的游戏
+              if (visibleCount < 50) {
+                card.style.display = '';
+                visibleCount++;
+              } else {
+                card.style.display = 'none';
+              }
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          
+          // 更新"Load More"按钮状态
+          const loadMoreBtn = document.getElementById('loadMoreBtn');
+          if (loadMoreBtn) {
+            const hiddenCount = Array.from(allGameCards).filter(card => {
+              if (selectedCategory === 'all-games') {
+                return card.style.display === 'none';
+              } else {
+                return card.getAttribute('data-category') === selectedCategory && card.style.display === 'none';
+              }
+            }).length;
+            
+            if (hiddenCount > 0) {
+              loadMoreBtn.style.display = '';
+            } else {
+              loadMoreBtn.style.display = 'none';
+            }
+          }
+        });
+      });
+      
+      // 默认触发"All Games"分类的点击事件
+      const allGamesLink = document.querySelector('.category-link[data-category="all-games"]');
+      if (allGamesLink) {
+        allGamesLink.click();
+      }
+    });
+    </script></body>
+</html> 
